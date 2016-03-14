@@ -40,6 +40,7 @@ for($day=1; $day <= 30; $day++){
         print_r("Победитель:" .  "$player");
         echo "</pre>";
     }
+    unset($players[$rand_players]);
 }
 
 
