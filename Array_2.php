@@ -1,42 +1,45 @@
 <?php
-$array = [
-    ['Name' => 'Artem', 'Surname' => 'Melnyk','Age'  => '38'],
-    ['Name' => 'Dima', 'Surname' => 'Shevchenko', 'Age'  => '25'],
-    ['Name' => 'Sergey', 'Surname' => 'Boyko', 'Age'  => '28'],
-    ['Name' => 'Andrey', 'Surname' => 'Kovalenko', 'Age'  => '24'],
-    ['Name' => 'Vlad', 'Surname' => 'Bondarenko', 'Age'  => '35'],
-    ['Name' => 'Ivan', 'Surname' => 'Tkachenko', 'Age'  => '60'],
-    ['Name' => 'Anton', 'Surname' => 'Kovalchuk', 'Age'  => '42'],
-    ['Name' => 'Maxim', 'Surname' => 'Kravchenko', 'Age'  => '57'],
-    ['Name' => 'Oleg', 'Surname' => 'Oliynyk', 'Age'  => '55'],
-    ['Name' => 'Roman', 'Surname' => 'Shevchuk', 'Age'  => '18'],
-    ['Name' => 'Nikita', 'Surname' => 'Polishchuk', 'Age'  => '20'],
-    ['Name' => 'Alex', 'Surname' => 'Lysenko', 'Age'  => '21'],
-    ['Name' => 'Artem', 'Surname' => 'Lysenko', 'Age'  => '54'],
-    ['Name' => 'Dima', 'Surname' => 'Polishchuk', 'Age'  => '59'],
-    ['Name' => 'Sergey', 'Surname' => 'Shevchuk', 'Age'  => '58'],
-    ['Name' => 'Andrey', 'Surname' => 'Oliynyk', 'Age'  => '41'],
-    ['Name' => 'Anton', 'Surname' => 'Kravchenko', 'Age'  => '45'],
-    ['Name' => 'Ivan', 'Surname' => 'Kovalchuk', 'Age'  => '47'],
-    ['Name' => 'Anton', 'Surname' => 'Bondarenko', 'Age'  => '29'],
-    ['Name' => 'Roman', 'Surname' => 'Kovalenko', 'Age'  => '30'],
-    ['Name' => 'Oleg', 'Surname' => 'Boyko', 'Age'  => '33'],
-    ['Name' => 'Roman', 'Surname' => 'Shevchenko', 'Age'  => '34'],
-    ['Name' => 'Nikita', 'Surname' => 'Melnyk', 'Age'  => '37'],
-    ['Name' => 'Alex', 'Surname' => 'Tkachenko', 'Age'  => '39'],
-    ['Name' => 'Roman', 'Surname' => 'Tkachenko', 'Age'  => '53'],
-    ['Name' => 'Oleg', 'Surname' => 'Melnyk', 'Age'  => '54'],
-    ['Name' => 'Roman', 'Surname' => 'Oliynyk', 'Age'  => '26'],
-    ['Name' => 'Anton', 'Surname' => 'Kovalchuk', 'Age'  => '23'],
-    ['Name' => 'Anton', 'Surname' => 'Lysenko', 'Age'  => '29'],
-    ['Name' => 'Sergey', 'Surname' => 'Polishchuk', 'Age'  => '22'],
-];
 
+$name = array('Nikita','Dima','Alex','Sergey','Vlad','Andrey','Artem','Ivan','Anton','Maxim','Oleg','Roman');
+
+$surname = array('Melnyk','Shevchenko','Boyko','Kovalenko','Bondarenko','Tkachenko','Kovalchuk','Kravchenko','Oliynyk','Shevchuk','Polishchuk','Lysenko');
+
+for($i=1; $i <= 30; $i++) {
+    $players[$i]=array('name' => $name[array_rand($name, 1)],
+        'surname' => $surname[array_rand($surname, 1)],
+        'age' => rand(18, 60));}
+
+echo "<h1> Игроки </h1>";
 echo "<pre>";
-print_r ($array);
+print_r ($players);
 echo "</pre>";
 
+echo "<h1> Игра </h1>";
 
-?>
+for($day=1; $day <= 30; $day++){
+    $rand_players = array_rand($players, 1);
+    $rand_player = $players[$rand_players];
+    $player =" ";
+    foreach($rand_player as $key => $value){
+
+        if ($key == 'age'){
+            $player = $player . ", " . "age - " . $value;
+        }
+        else{
+            $player = $player . " " . $value;
+        }
+    }
+    if ($day < 30) {
+        echo "<pre>";
+        print_r("Сегодня, $day.03.2016, игру покидает:" . "$player");
+        echo "</pre>";
+    }
+    else
+    {
+        echo "<pre>";
+        print_r("Победитель:" .  "$player");
+        echo "</pre>";
+    }
+}
 
 
